@@ -65,11 +65,17 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git@github.com:smallrye/smallrye-open-api.git</connection>
-        <developerConnection>scm:git:git@github.com:smallrye/smallrye-open-api.git</developerConnection>
-        <url>https://github.com/smallrye/smallrye-open-api/</url>
+        <connection>scm:git:git@github.com:jmini/smallrye-open-api.git</connection>
+        <developerConnection>scm:git:git@github.com:jmini/smallrye-open-api.git</developerConnection>
+        <url>https://github.com/jmini/smallrye-open-api/</url>
         <tag>HEAD</tag>
     </scm>
+    <distributionManagement>
+        <repository>
+            <id>bintray.jmini.maven</id>
+            <url>https://api.bintray.com/maven/jmini/maven/smallrye-open-api</url>
+        </repository>
+    </distributionManagement>
 
     <modules>
         <module>implementation</module>
