@@ -6,7 +6,6 @@ import java.util.List;
 import org.eclipse.microprofile.openapi.models.Components;
 import org.eclipse.microprofile.openapi.models.ExternalDocumentation;
 import org.eclipse.microprofile.openapi.models.OpenAPI;
-import org.eclipse.microprofile.openapi.models.PathItem;
 import org.eclipse.microprofile.openapi.models.Paths;
 import org.eclipse.microprofile.openapi.models.info.Info;
 import org.eclipse.microprofile.openapi.models.security.SecurityRequirement;
@@ -94,6 +93,15 @@ public class OpenAPIImpl extends ExtensibleImpl<OpenAPI> implements OpenAPI, Mod
     }
 
     /**
+     * @see org.eclipse.microprofile.openapi.models.OpenAPI#servers(java.util.List)
+     */
+    @Override
+    public OpenAPI servers(List<Server> servers) {
+        this.servers = ModelUtil.replace(servers, ArrayList<Server>::new);
+        return this;
+    }
+
+    /**
      * @see org.eclipse.microprofile.openapi.models.OpenAPI#addServer(org.eclipse.microprofile.openapi.models.servers.Server)
      */
     @Override
@@ -160,6 +168,15 @@ public class OpenAPIImpl extends ExtensibleImpl<OpenAPI> implements OpenAPI, Mod
     }
 
     /**
+     * @see org.eclipse.microprofile.openapi.models.OpenAPI#tags(java.util.List)
+     */
+    @Override
+    public OpenAPI tags(List<Tag> tags) {
+        this.tags = ModelUtil.replace(tags, ArrayList<Tag>::new);
+        return this;
+    }
+
+    /**
      * @see org.eclipse.microprofile.openapi.models.OpenAPI#addTag(org.eclipse.microprofile.openapi.models.tags.Tag)
      */
     @Override
@@ -213,6 +230,15 @@ public class OpenAPIImpl extends ExtensibleImpl<OpenAPI> implements OpenAPI, Mod
     }
 
     /**
+     * @see org.eclipse.microprofile.openapi.models.OpenAPI#paths(org.eclipse.microprofile.openapi.models.Paths)
+     */
+    @Override
+    public OpenAPI paths(Paths paths) {
+        this.paths = paths;
+        return this;
+    }
+
+    /**
      * @see org.eclipse.microprofile.openapi.models.OpenAPI#getComponents()
      */
     @Override
@@ -226,15 +252,5 @@ public class OpenAPIImpl extends ExtensibleImpl<OpenAPI> implements OpenAPI, Mod
     @Override
     public void setComponents(Components components) {
         this.components = components;
-    }
-
-    @Override
-    // TODO: Remove method for MicroProfile OpenAPI 2.0
-    public OpenAPI path(String name, PathItem path) {
-        if (this.paths == null) {
-            this.paths = new PathsImpl();
-        }
-        this.paths.addPathItem(name, path);
-        return this;
     }
 }

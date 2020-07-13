@@ -39,9 +39,7 @@ public class OperationImpl extends ExtensibleImpl<Operation> implements Operatio
      */
     @Override
     public List<String> getTags() {
-        //TODO Return immutable map
-        //return ModelUtil.unmodifiableList(this.tags);
-        return this.tags;
+        return ModelUtil.unmodifiableList(this.tags);
     }
 
     /**
@@ -50,6 +48,15 @@ public class OperationImpl extends ExtensibleImpl<Operation> implements Operatio
     @Override
     public void setTags(List<String> tags) {
         this.tags = ModelUtil.replace(tags, ArrayList<String>::new);
+    }
+
+    /**
+     * @see org.eclipse.microprofile.openapi.models.Operation#tags(java.util.List)
+     */
+    @Override
+    public Operation tags(List<String> tags) {
+        this.tags = ModelUtil.replace(tags, ArrayList<String>::new);
+        return this;
     }
 
     /**
@@ -150,6 +157,15 @@ public class OperationImpl extends ExtensibleImpl<Operation> implements Operatio
     }
 
     /**
+     * @see org.eclipse.microprofile.openapi.models.Operation#parameters(java.util.List)
+     */
+    @Override
+    public Operation parameters(List<Parameter> parameters) {
+        this.parameters = ModelUtil.replace(parameters, ArrayList<Parameter>::new);
+        return this;
+    }
+
+    /**
      * @see org.eclipse.microprofile.openapi.models.Operation#addParameter(org.eclipse.microprofile.openapi.models.parameters.Parameter)
      */
     @Override
@@ -215,6 +231,15 @@ public class OperationImpl extends ExtensibleImpl<Operation> implements Operatio
     }
 
     /**
+     * @see org.eclipse.microprofile.openapi.models.Operation#callbacks(java.util.Map)
+     */
+    @Override
+    public Operation callbacks(Map<String, Callback> callbacks) {
+        this.callbacks = ModelUtil.replace(callbacks, LinkedHashMap<String, Callback>::new);
+        return this;
+    }
+
+    /**
      * @see org.eclipse.microprofile.openapi.models.Operation#addCallback(java.lang.String,
      *      org.eclipse.microprofile.openapi.models.callbacks.Callback)
      */
@@ -265,6 +290,15 @@ public class OperationImpl extends ExtensibleImpl<Operation> implements Operatio
     }
 
     /**
+     * @see org.eclipse.microprofile.openapi.models.Operation#security(java.util.List)
+     */
+    @Override
+    public Operation security(List<SecurityRequirement> security) {
+        this.security = ModelUtil.replace(security, ArrayList<SecurityRequirement>::new);
+        return this;
+    }
+
+    /**
      * @see org.eclipse.microprofile.openapi.models.Operation#addSecurityRequirement(org.eclipse.microprofile.openapi.models.security.SecurityRequirement)
      */
     @Override
@@ -295,6 +329,15 @@ public class OperationImpl extends ExtensibleImpl<Operation> implements Operatio
     @Override
     public void setServers(List<Server> servers) {
         this.servers = ModelUtil.replace(servers, ArrayList<Server>::new);
+    }
+
+    /**
+     * @see org.eclipse.microprofile.openapi.models.Operation#servers(java.util.List)
+     */
+    @Override
+    public Operation servers(List<Server> servers) {
+        this.servers = ModelUtil.replace(servers, ArrayList<Server>::new);
+        return this;
     }
 
     /**
